@@ -1,43 +1,28 @@
 import { combineReducers } from 'redux'
 import * as types from './types'
 
-// COUNTER REDUCER
-const counterReducer = (state = 0, { type }) => {
-  switch (type) {
-    case types.INCREMENT:
-      return state + 1
-    case types.DECREMENT:
-      return state - 1
-    case types.RESET:
-      return 0
-    default:
-      return state
-  }
+const initData = {
+  data: [{message: 'サンプルメッセージ'},{message: "明日の天気は晴れです。"}],
+  info: 'メッセージを入力してください。',
 }
 
-// INITIAL TIMER STATE
-const initialTimerState = {
-  lastUpdate: 0,
-  light: false,
-}
-
-// TIMER REDUCER
-const timerReducer = (state = initialTimerState, { type, payload }) => {
-  switch (type) {
-    case types.TICK:
+const messageReducer = (state = initData, action) => {
+  switch (action.type) {
+    case types.ADD:
+      let newdata = state.data.slice();
+      newdata.unshift({message: action.message});
       return {
-        lastUpdate: payload.ts,
-        light: !!payload.light,
-      }
+        data: newdata,
+        info: 'メッセージを追加しました。',
+      };
     default:
-      return state
-  }
+      return state;
+  }  
 }
 
 // COMBINED REDUCERS
 const reducers = {
-  counter: counterReducer,
-  timer: timerReducer,
+  message: messageReducer,
 }
 
 export default combineReducers(reducers)
