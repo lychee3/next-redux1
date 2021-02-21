@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import * as types from './types'
 
-const initData = {
-  data: [{message: 'サンプルメッセージ'},{message: "明日の天気は晴れです。"}],
+export const initMessageData = {
+  data: [{message: 'サンプルメッセージ'}, {message: '明日の天気は晴れです。'}],
   info: 'メッセージを入力してください。',
 }
 
-const messageReducer = (state = initData, action) => {
+const messageReducer = (state = initMessageData, action) => {
   switch (action.type) {
     case types.ADD:
       let newdata = state.data.slice();

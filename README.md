@@ -5,7 +5,7 @@ Formから入力したメッセージをReduxのストアで保管し、スト�
 
 ![画面](./docs/images/screen.png)
 
-
+## 補足
 * AddFormコンポーネントとMemoコンポーネントで共有するデータ（今回は入力したメッセージの配列）をReduxのストアで管理する。
 
 * npx create-next-app --example with-redux-thunk next-app で作成した雛形を編集した。
